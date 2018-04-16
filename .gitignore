@@ -19,3 +19,6 @@ npm-debug.log
 truffle.js
 
 yarn-error.log
+
+yarn.lock
+
