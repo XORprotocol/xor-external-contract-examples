@@ -1,7 +1,7 @@
 var Ownable = artifacts.require("zeppelin-solidity/contracts/ownership/Ownable.sol");
 var Destructible = artifacts.require("zeppelin-solidity/contracts/lifecycle/Destructible.sol");
 var SafeMath = artifacts.require("zeppelin-solidity/contracts/math/SafeMath.sol");
-var XorMath = artifacts.require("./libraries/XorMath.sol");
+var XorMath = artifacts.require("xor-libraries/contracts/XorMath.sol");
 var ExampleMarketTrust = artifacts.require("./ExampleMarketTrust.sol");
 var ExampleMarketInterest = artifacts.require("./ExampleMarketInterest.sol");
 
