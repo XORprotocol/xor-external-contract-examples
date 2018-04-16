@@ -48,6 +48,6 @@ contract ExampleMarketTrust is Destructible {
   * @param _amt The amount being requested by borrower in current loan request
   */
   function getInterest(uint _marketId, address _address, uint _amt) public view returns (uint) {
-    return getRisk(_marketId, _address, _amt).mul(markets[_marketId].getRiskConstant(_marketId));
+    return getRisk(_marketId, _address, _amt).mul(marketInterestContract.getRiskConstant(_marketId));
   }
 }

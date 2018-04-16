@@ -8,7 +8,8 @@
   },
   "scripts": {
     "compile": "truffle compile",
-    "test": "truffle test"
+    "test": "truffle test",
+    "deploy": "truffle deploy"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
     "ethereum"
   ],
   "authors": [
-    "Matthew Black <matthew@xor.finance>"
+    "Matthew Black <matthew@xor.finance>",
     "Tony Cai <tony@xor.finance>"
   ],
   "license": "MIT",
