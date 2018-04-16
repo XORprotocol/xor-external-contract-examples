@@ -18,7 +18,7 @@
     "ethereum"
   ],
   "authors": [
-    "Matthew Black <matthew@xor.finance>"
+    "Matthew Black <matthew@xor.finance>",
     "Tony Cai <tony@xor.finance>"
   ],
   "license": "MIT",
@@ -28,7 +28,7 @@
   "dependencies": {
     "truffle": "4.0.1",
     "truffle-hdwallet-provider": "0.0.3",
-    "zeppelin-solidity": "^1.8.0",
+    "zeppelin-solidity": "^1.8.0"
   },
   "devDependencies": {
     "eslint-plugin-import": "2.7.0",
