@@ -10,10 +10,13 @@ module.exports = function(deployer) {
   deployer.link(Ownable, Destructible);
   deployer.deploy(Destructible);
   deployer.link(Destructible, ExampleMarketTrust);
+  deployer.link(Destructible, ExampleMarketInterest);
   deployer.deploy(SafeMath);
   deployer.link(SafeMath, ExampleMarketTrust);
+  deployer.link(SafeMath, ExampleMarketInterest);
   deployer.link(SafeMath, XorMath);
   deployer.deploy(XorMath);
   deployer.link(XorMath, ExampleMarketTrust);
   deployer.deploy(ExampleMarketTrust);
+  deployer.deploy(ExampleMarketInterest);
 };
