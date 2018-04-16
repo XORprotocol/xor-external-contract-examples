@@ -8,7 +8,7 @@ import 'zeppelin-solidity/contracts/math/SafeMath.sol';
   * @dev Interface for XOR Market Interest Contract for calculating interest payment
  */
 
- contract MarketInterestInterface {
+ contract MarketInterestExampleInterface {
 
  	// @dev given the market id and address of borrower, returns borrower's trust score
  	function getTrustScore(uint _marketId, address _address) public view returns (uint);
@@ -22,16 +22,16 @@ import 'zeppelin-solidity/contracts/math/SafeMath.sol';
   * @dev Example Market Interest contract for showing interest payment programmability.
  */
 
-contract ExampleMarketTrust is Destructible {
+contract ExampleMarketInterest is Destructible {
   using SafeMath for uint;
 
-  MarketInterestInterface marketInterestContract;
+  MarketInterestExampleInterface marketInterestContract;
 
   /**
     * @dev Set the address of the sibling contract that track interest calculation.
    */
   function setMarketInterestContractAddress(address _address) external onlyOwner {
-    marketInterestContract = MarketInterestInterface(_address);
+    marketInterestContract = MarketInterestExampleInterface(_address);
   }
 
   /**

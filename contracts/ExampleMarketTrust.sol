@@ -8,7 +8,7 @@ import './libraries/XorMath.sol';
   * @dev Interface for XOR Market Trust Contract for calculating trust score
  */
 
-contract MarketTrustInterface {
+contract MarketTrustExampleInterface {
 
   // @dev given the address, returns the length of repayments array
   function getRepaymentsLength(address _address) public view returns (uint);
@@ -33,13 +33,13 @@ contract ExampleMarketTrust is Destructible {
   using SafeMath for uint;
   using XorMath for uint;
 
-  MarketTrustInterface marketTrustContract;
+  MarketTrustExampleInterface marketTrustContract;
 
   /**
     * @dev Set the address of the sibling contract that track trust score.
    */
   function setMarketTrustContractAddress(address _address) external onlyOwner {
-    marketTrustContract = MarketTrustInterface(_address);
+    marketTrustContract = MarketTrustExampleInterface(_address);
   }
 
   /**
