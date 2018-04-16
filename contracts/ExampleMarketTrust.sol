@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
-import './zeppelin/lifecycle/Killable.sol';
-import './libraries/SafeMath.sol';
+import 'zeppelin-solidity/contracts/lifecycle/Destructible.sol';
+import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import './libraries/XorMath.sol';
 
 /**
@@ -30,7 +30,7 @@ contract MarketTrustInterface {
   * @dev Example Market Trust contract for showing trust score programmability.
  */
 
-contract ExampleMarketTrust is Killable {
+contract ExampleMarketTrust is Destructible {
   using SafeMath for uint;
   using XorMath for uint;
 
@@ -39,7 +39,7 @@ contract ExampleMarketTrust is Killable {
   /**
     * @dev Set the address of the sibling contract that track trust score.
    */
-  function setMarketInterestContractAddress(address _address) external onlyOwner {
+  function setMarketTrustContractAddress(address _address) external onlyOwner {
     marketTrustContract = MarketTrustInterface(_address);
   }
 
