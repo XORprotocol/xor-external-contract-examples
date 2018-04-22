@@ -1,18 +1,21 @@
-var Ownable = artifacts.require("./zeppelin/ownership/Ownable.sol");
-var Killable = artifacts.require("./zeppelin/lifecycle/Killable.sol");
-var SafeMath = artifacts.require("./libraries/SafeMath.sol");
-var XorMath = artifacts.require("./libraries/XorMath.sol");
+var Ownable = artifacts.require("zeppelin-solidity/ownership/Ownable.sol");
+var Destructible = artifacts.require("zeppelin-solidity/contracts/lifecycle/Destructible.sol");
+var SafeMath = artifacts.require("zeppelin-solidity/contracts/math/SafeMath.sol");
+var XorMath = artifacts.require("xor-libraries/contracts/XorMath.sol");
 var ExampleMarketTrust = artifacts.require("./ExampleMarketTrust.sol");
+var ExampleMarketInterest = artifacts.require("./ExampleMarketInterest.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(Ownable);
-  deployer.link(Ownable, Killable);
-  deployer.deploy(Killable);
-  deployer.link(Killable, ExampleMarketTrust);
+  deployer.link(Ownable, Destructible);
+  deployer.deploy(Destructible);
+  deployer.link(Destructible, ExampleMarketTrust);
   deployer.deploy(SafeMath);
   deployer.link(SafeMath, ExampleMarketTrust);
   deployer.link(SafeMath, XorMath);
   deployer.deploy(XorMath);
   deployer.link(XorMath, ExampleMarketTrust);
   deployer.deploy(ExampleMarketTrust);
+  deployer.link(SafeMath, ExampleMarketInterest);
+  deployer.deploy(ExampleMarketInterest);
 };
