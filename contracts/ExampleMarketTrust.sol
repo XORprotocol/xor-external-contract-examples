@@ -36,10 +36,17 @@ contract ExampleMarketTrust is Destructible {
   MarketTrustInterface marketTrustContract;
 
   /**
-    * @dev Set the address of the sibling contract that track trust score.
+    * @dev Set the address of the sibling contract that tracks trust score.
    */
   function setMarketTrustContractAddress(address _address) external onlyOwner {
     marketTrustContract = MarketTrustInterface(_address);
+  }
+
+  /**
+    * @dev Get the address of the sibling contract that tracks trust score.
+   */
+  function getMarketTrustContractAddress() external view returns(address) {
+    return address(marketTrustContract);
   }
 
   /**

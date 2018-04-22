@@ -26,7 +26,7 @@
     "url": "https://github.com/XORprotocol/xor-external-contract-examples/issues"
   },
   "dependencies": {
-    "truffle": "4.0.1",
+    "truffle": "4.1.4",
     "truffle-hdwallet-provider": "0.0.3",
     "zeppelin-solidity": "^1.8.0"
   },
