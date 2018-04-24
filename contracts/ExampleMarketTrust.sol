@@ -8,7 +8,7 @@ import 'xor-libraries/contracts/XorMath.sol';
   * @dev Interface for XOR Market Trust Contract for calculating trust score
  */
 
-contract MarketTrustInterface {
+contract ExampleMarketTrustInterface {
 
   // @dev given the address, returns the length of repayments array
   function getRepaymentsLength(address _address) public view returns (uint);
@@ -33,20 +33,20 @@ contract ExampleMarketTrust is Destructible {
   using SafeMath for uint;
   using XorMath for uint;
 
-  MarketTrustInterface marketTrustContract;
+  ExampleMarketTrustInterface exampleMarketTrustContract;
 
   /**
     * @dev Set the address of the sibling contract that tracks trust score.
    */
   function setMarketTrustContractAddress(address _address) external onlyOwner {
-    marketTrustContract = MarketTrustInterface(_address);
+    exampleMarketTrustContract = ExampleMarketTrustInterface(_address);
   }
 
   /**
     * @dev Get the address of the sibling contract that tracks trust score.
    */
   function getMarketTrustContractAddress() external view returns(address) {
-    return address(marketTrustContract);
+    return address(exampleMarketTrustContract);
   }
 
   /**
@@ -56,8 +56,8 @@ contract ExampleMarketTrust is Destructible {
     // uint[] repayments = marketTrustContract.getRepayments(_address);
     // uint[] defaults = marketTrustContract.getDefaults(_address);
 
-    uint numRepayments = marketTrustContract.getRepaymentsLength(_address);
-    uint numDefaults = marketTrustContract.getDefaultsLength(_address);
+    uint numRepayments = exampleMarketTrustContract.getRepaymentsLength(_address);
+    uint numDefaults = exampleMarketTrustContract.getDefaultsLength(_address);
 
     // total value of all repayments in Wei
     uint totalRepayments;
@@ -74,10 +74,10 @@ contract ExampleMarketTrust is Destructible {
     uint score;
 
     for (uint x = 0; x < numRepayments; x++) {
-      totalRepayments = totalRepayments.add(marketTrustContract.getRepayment(_address, x));
+      totalRepayments = totalRepayments.add(exampleMarketTrustContract.getRepayment(_address, x));
     }
     for (uint y = 0; y < numDefaults; y++) {
-      totalDefaults = totalDefaults.add(marketTrustContract.getDefault(_address, y));
+      totalDefaults = totalDefaults.add(exampleMarketTrustContract.getDefault(_address, y));
     }
 
     repaymentComponent = totalRepayments.sqrt().div(100000000);
