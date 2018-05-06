@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 
-import 'zeppelin-solidity/contracts/lifecycle/Destructible.sol';
+import 'openzeppelin-solidity/contracts/lifecycle/Destructible.sol';
 import 'xor-libraries/contracts/XorMath.sol';
 
 /**

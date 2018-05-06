@@ -1,5 +1,5 @@
 {
-  "name": "XorExternalContractExamples",
+  "name": "xor-external-contract-examples",
   "version": "0.1.0",
   "description": "Democratizing Financial Access for Everyone",
   "main": "truffle.js",
@@ -9,7 +9,8 @@
   "scripts": {
     "compile": "truffle compile",
     "test": "truffle test",
-    "deploy": "truffle deploy"
+    "deploy": "truffle deploy",
+    "migrate": "truffle migrate"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,10 @@
     "url": "https://github.com/XORprotocol/xor-external-contract-examples/issues"
   },
   "dependencies": {
+    "openzeppelin-solidity": "1.9.0",
     "truffle": "4.1.4",
     "truffle-hdwallet-provider": "0.0.3",
-    "xor-libraries": "https://github.com/XORprotocol/xor-libraries",
-    "zeppelin-solidity": "^1.8.0"
+    "xor-libraries": "https://github.com/XORprotocol/xor-libraries.git"
   },
   "devDependencies": {
     "eslint-plugin-import": "2.7.0",
