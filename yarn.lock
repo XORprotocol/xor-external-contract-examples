@@ -1267,6 +1267,10 @@ once@^1.3.0:
   dependencies:
     wrappy "1"
 
+openzeppelin-solidity@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/openzeppelin-solidity/-/openzeppelin-solidity-1.9.0.tgz#929c2e8eab5d1935a048390a77645b36dfc5cfad"
+
 original-require@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/original-require/-/original-require-1.0.1.tgz#0f130471584cd33511c5ec38c8d59213f9ac5e20"
@@ -1625,7 +1629,7 @@ solc@0.4.18:
     semver "^5.3.0"
     yargs "^4.7.1"
 
-solc@^0.4.2:
+solc@0.4.21, solc@^0.4.2:
   version "0.4.21"
   resolved "https://registry.yarnpkg.com/solc/-/solc-0.4.21.tgz#6a7ecd505bfa0fc268330d5de6b9ae65c8c68264"
   dependencies:
@@ -1778,6 +1782,14 @@ truffle@4.0.1:
     original-require "^1.0.1"
     solc "0.4.18"
 
+truffle@4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/truffle/-/truffle-4.1.4.tgz#733f92d558090f866180e8f46ed083aaae7c1146"
+  dependencies:
+    mocha "^3.4.2"
+    original-require "^1.0.1"
+    solc "0.4.21"
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
@@ -1903,11 +1915,11 @@ xmlhttprequest@*:
 
 "xor-libraries@https://github.com/XORprotocol/xor-libraries.git":
   version "0.1.0"
-  resolved "https://github.com/XORprotocol/xor-libraries.git#422fe6785ba8f81698a5b1dbcdb48bf6931a5ec0"
+  resolved "https://github.com/XORprotocol/xor-libraries.git#1958dd39dc75940784cc579809c7f38feff3c810"
   dependencies:
-    truffle "4.0.1"
+    openzeppelin-solidity "1.9.0"
+    truffle "4.1.4"
     truffle-hdwallet-provider "0.0.3"
-    zeppelin-solidity "^1.8.0"
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0:
   version "4.0.1"

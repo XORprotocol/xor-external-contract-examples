@@ -1,7 +1,7 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.21;
 
-import 'zeppelin-solidity/contracts/lifecycle/Destructible.sol';
-import 'zeppelin-solidity/contracts/math/SafeMath.sol';
+import 'openzeppelin-solidity/contracts/lifecycle/Destructible.sol';
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 /**
   * @title MarketInterestInterface
