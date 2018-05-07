@@ -11,10 +11,8 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 contract ExampleMarketInterestInterface {
 
  	// @dev given the market id and address of borrower, returns borrower's trust score
- 	function getTrustScore(uint _marketId, address _address) external view returns (uint);
+ 	function getTrustScore(address _address) external view returns (uint);
 
- 	// @dev given the market id, returns riskCofficient of market version
- 	function getMarketRiskCoefficient(uint _marketId) public view returns (uint);
  }
 
  /**
@@ -28,6 +26,10 @@ contract ExampleMarketInterest is Destructible {
   address creatorAddress;
 
   ExampleMarketInterestInterface exampleMarketInterestContract;
+
+  // Risk Coefficient is a coefficient multiplier multiplied with risk rating
+  // to calculate interest payment for each borrower in market (in Wei)
+  uint riskCoefficient = 3;
 
   /**
     * @dev Set the address of the sibling contract that track interest calculation.
@@ -47,15 +49,15 @@ contract ExampleMarketInterest is Destructible {
   * @dev Simple custom calculation of risk factor for an individual borrower
   * @param _amt The amount being requested by borrower in current loan request
   */
-  function getRisk(uint _marketId, address _address, uint _amt) private view returns (uint) {
-    return _amt.div(exampleMarketInterestContract.getTrustScore(_marketId, _address));       
+  function getRisk(address _address, uint _amt) private view returns (uint) {
+    return _amt.div(exampleMarketInterestContract.getTrustScore(_address));       
   }
 
   /**
   * @dev Simple custom calculation of interest payment for an individual borrower
   * @param _amt The amount being requested by borrower in current loan request
   */
-  function getInterest(uint _marketId, address _address, uint _amt) external view returns (uint) {
-    return getRisk(_marketId, _address, _amt).mul(exampleMarketInterestContract.getMarketRiskCoefficient(_marketId));
+  function getInterest(address _address, uint _amt) external view returns (uint) {
+    return getRisk(_address, _amt).mul(riskCoefficient);
   }
 }
