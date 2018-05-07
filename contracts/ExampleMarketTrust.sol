@@ -5,8 +5,8 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 import 'xor-libraries/contracts/XorMath.sol';
 
 /**
-  * @title MarketTrustInterface
-  * @dev Interface for XOR Market Trust Contract for calculating trust score
+ * @title MarketTrustInterface
+ * @dev Interface for XOR Market Trust Contract for calculating trust score
  */
 
 contract ExampleMarketTrustInterface {
@@ -26,8 +26,8 @@ contract ExampleMarketTrustInterface {
 
 
 /**
-  * @title ExampleMarketTrust
-  * @dev Example Market Trust contract for showing trust score programmability.
+ * @title ExampleMarketTrust
+ * @dev Example Market Trust contract for showing trust score programmability.
  */
 
 contract ExampleMarketTrust is Destructible {
@@ -40,21 +40,23 @@ contract ExampleMarketTrust is Destructible {
   ExampleMarketTrustInterface exampleMarketTrustContract;
 
   /**
-    * @dev Set the address of the sibling contract that tracks trust score.
+   * @dev Set the address of the sibling contract that tracks trust score.
    */
   function setMarketTrustContractAddress(address _address) external onlyOwner {
     exampleMarketTrustContract = ExampleMarketTrustInterface(_address);
   }
 
   /**
-    * @dev Get the address of the sibling contract that tracks trust score.
+   * @dev Get the address of the sibling contract that tracks trust score.
    */
   function getMarketTrustContractAddress() external view returns(address) {
     return address(exampleMarketTrustContract);
   }
 
   /**
-    * @dev Returns the trust score of a user by using repayments and defaults
+   * @dev Returns the trust score of a user by using repayments and defaults
+   * NOTE: In future, may need to take _marketId as parameter to account for
+   *       different identities used in each market
    */
   function getTrustScore(address _address) external view returns (uint) {
     // uint[] repayments = marketTrustContract.getRepayments(_address);
