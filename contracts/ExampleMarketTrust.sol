@@ -12,16 +12,16 @@ import 'xor-libraries/contracts/XorMath.sol';
 contract ExampleMarketTrustInterface {
 
   // @dev given the address, returns the length of repayments array
-  function getRepaymentsLength(address _address) public view returns (uint);
+  function getRepaymentsLength(address _address) external view returns (uint);
 
   // @dev given the address, returns the length of defaults array
-  function getDefaultsLength(address _address) public view returns (uint);
+  function getDefaultsLength(address _address) external view returns (uint);
 
   // @dev given the address, return the repayment at a specific index
-  function getRepayment(address _address, uint _index) public view returns (uint);
+  function getRepayment(address _address, uint _index) external view returns (uint);
 
   // @dev given the address, return the default at a specific index
-  function getDefault(address _address, uint _index) public view returns (uint);
+  function getDefault(address _address, uint _index) external view returns (uint);
 }
 
 

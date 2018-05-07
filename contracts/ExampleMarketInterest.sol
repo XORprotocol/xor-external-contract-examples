@@ -11,10 +11,10 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 contract ExampleMarketInterestInterface {
 
  	// @dev given the market id and address of borrower, returns borrower's trust score
- 	function getTrustScore(uint _marketId, address _address) public view returns (uint);
+ 	function getTrustScore(uint _marketId, address _address) external view returns (uint);
 
- 	// @dev given the market id, returns riskConstant of market
- 	function getRiskConstant(uint _marketId) public view returns (uint);
+ 	// @dev given the market id, returns riskCofficient of market version
+ 	function getMarketRiskCoefficient(uint _marketId) public view returns (uint);
  }
 
  /**
@@ -56,6 +56,6 @@ contract ExampleMarketInterest is Destructible {
   * @param _amt The amount being requested by borrower in current loan request
   */
   function getInterest(uint _marketId, address _address, uint _amt) external view returns (uint) {
-    return getRisk(_marketId, _address, _amt).mul(exampleMarketInterestContract.getRiskConstant(_marketId));
+    return getRisk(_marketId, _address, _amt).mul(exampleMarketInterestContract.getMarketRiskCoefficient(_marketId));
   }
 }
