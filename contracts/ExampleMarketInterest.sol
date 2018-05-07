@@ -25,6 +25,8 @@ contract ExampleMarketInterestInterface {
 contract ExampleMarketInterest is Destructible {
   using SafeMath for uint;
 
+  address creatorAddress;
+
   ExampleMarketInterestInterface exampleMarketInterestContract;
 
   /**
@@ -53,7 +55,7 @@ contract ExampleMarketInterest is Destructible {
   * @dev Simple custom calculation of interest payment for an individual borrower
   * @param _amt The amount being requested by borrower in current loan request
   */
-  function getInterest(uint _marketId, address _address, uint _amt) public view returns (uint) {
+  function getInterest(uint _marketId, address _address, uint _amt) external view returns (uint) {
     return getRisk(_marketId, _address, _amt).mul(exampleMarketInterestContract.getRiskConstant(_marketId));
   }
 }

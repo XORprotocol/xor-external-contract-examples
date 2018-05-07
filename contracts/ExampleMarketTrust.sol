@@ -1,6 +1,7 @@
 pragma solidity ^0.4.21;
 
 import 'openzeppelin-solidity/contracts/lifecycle/Destructible.sol';
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 import 'xor-libraries/contracts/XorMath.sol';
 
 /**
@@ -33,6 +34,9 @@ contract ExampleMarketTrust is Destructible {
   using SafeMath for uint;
   using XorMath for uint;
 
+  address creatorAddress;
+
+
   ExampleMarketTrustInterface exampleMarketTrustContract;
 
   /**
@@ -52,7 +56,7 @@ contract ExampleMarketTrust is Destructible {
   /**
     * @dev Returns the trust score of a user by using repayments and defaults
    */
-  function getTrustScore(address _address) public view returns (uint) {
+  function getTrustScore(address _address) external view returns (uint) {
     // uint[] repayments = marketTrustContract.getRepayments(_address);
     // uint[] defaults = marketTrustContract.getDefaults(_address);
 
