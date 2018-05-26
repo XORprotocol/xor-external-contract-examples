@@ -8,7 +8,7 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
   * @dev Interface for XOR Market Interest Contract for calculating interest payment
  */
 
-contract LoanInterface {
+contract InterestLoanInterface {
 
  	// @dev given the market id and address of borrower, returns borrower's trust score
  	function getTrustScore(address _address) external view returns (uint);
@@ -25,7 +25,7 @@ contract ExampleLoanInterest is Destructible {
 
   address creatorAddress;
 
-  LoanInterface loanContract;
+  InterestLoanInterface loanContract;
 
   // Risk Coefficient is a coefficient multiplier multiplied with risk rating
   // to calculate interest payment for each borrower in market (in Wei)
@@ -35,7 +35,7 @@ contract ExampleLoanInterest is Destructible {
     * @dev Set the address of the sibling contract that track interest calculation.
    */
   function setLoanContractAddress(address _address) external onlyOwner {
-    loanContract = LoanInterface(_address);
+    loanContract = InterestLoanInterface(_address);
   }
 
   /**
