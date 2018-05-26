@@ -1,7 +1,7 @@
-var ExampleMarketTrust = artifacts.require("ExampleMarketTrust");
-var ExampleMarketInterest = artifacts.require("ExampleMarketInterest");
+var ExampleLoanTrust = artifacts.require("ExampleLoanTrust");
+var ExampleLoanInterest = artifacts.require("ExampleLoanInterest");
 
 module.exports = function(deployer) {
-  deployer.deploy(ExampleMarketTrust);
-  deployer.deploy(ExampleMarketInterest);
+  deployer.deploy(ExampleLoanTrust);
+  deployer.deploy(ExampleLoanInterest);
 };
