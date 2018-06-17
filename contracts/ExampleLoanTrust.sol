@@ -39,27 +39,15 @@ contract ExampleLoanTrust is Destructible {
   TrustLoanInterface loanContract;
 
   /**
-   * @dev Set the address of the sibling contract that tracks trust score.
-   */
-  function setLoanContractAddress(address _address) external onlyOwner {
-    loanContract = TrustLoanInterface(_address);
-  }
-
-  /**
-   * @dev Get the address of the sibling contract that tracks trust score.
-   */
-  function getLoanContractAddress() external view returns(address) {
-    return address(loanContract);
-  }
-
-  /**
    * @dev Returns the trust score of a user by using repayments and defaults
    * NOTE: In future, may need to take _marketId as parameter to account for
    *       different identities used in each market
    */
-  function getTrustScore(address _address) external view returns (uint) {
+  function getTrustScore(address _address, address _loanAddress) external view returns (uint) {
     // uint[] repayments = marketTrustContract.getRepayments(_address);
     // uint[] defaults = marketTrustContract.getDefaults(_address);
+
+    TrustLoanInterface loanContract = TrustLoanInterface(_loanAddress);
 
     uint numRepayments = loanContract.getRepaymentsLength(_address);
     uint numDefaults = loanContract.getDefaultsLength(_address);

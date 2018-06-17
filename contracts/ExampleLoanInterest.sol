@@ -23,33 +23,16 @@ contract InterestLoanInterface {
 contract ExampleLoanInterest is Destructible {
   using SafeMath for uint;
 
-  address creatorAddress;
-
-  InterestLoanInterface loanContract;
-
   // Risk Coefficient is a coefficient multiplier multiplied with risk rating
   // to calculate interest payment for each borrower in market (in Wei)
   uint riskCoefficient = 3;
 
   /**
-    * @dev Set the address of the sibling contract that track interest calculation.
-   */
-  function setLoanContractAddress(address _address) external onlyOwner {
-    loanContract = InterestLoanInterface(_address);
-  }
-
-  /**
-    * @dev Get the address of the sibling contract that track interest calculation.
-   */
-  function getLoanContractAddress() external view returns(address) {
-    return address(loanContract);
-  }
-
-  /**
   * @dev Simple custom calculation of risk factor for an individual borrower
   * @param _amt The amount being requested by borrower in current loan request
   */
-  function getRisk(address _address, uint _amt) private view returns (uint) {
+  function getRisk(address _address, uint _amt, address _loanAddress) private view returns (uint) {
+    InterestLoanInterface loanContract = InterestLoanInterface(_loanAddress);
     return _amt.div(loanContract.getTrustScore(_address));       
   }
 
@@ -57,7 +40,7 @@ contract ExampleLoanInterest is Destructible {
   * @dev Simple custom calculation of interest payment for an individual borrower
   * @param _amt The amount being requested by borrower in current loan request
   */
-  function getInterest(address _address, uint _amt) external view returns (uint) {
-    return getRisk(_address, _amt).mul(riskCoefficient);
+  function getInterest(address _address, uint _amt, address _loanAddress) external view returns (uint) {
+    return getRisk(_address, _amt, _loanAddress).mul(riskCoefficient);
   }
 }
